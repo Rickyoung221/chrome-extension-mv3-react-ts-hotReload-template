@@ -39,7 +39,16 @@ This project was bootstrapped with [Create React App], it is based on the Chrome
 
 ## 2. Installation
 
-Use `yarn build` to build the project above
+```
+yarn install
+
+# Run in watch mode
+yarn watch
+
+# Run in production mode
+yarn build 
+```
+
 Go to chrome://extensions in Google Chrome
 
 ![Screen Shot 2022-04-14 at 08.57.31](https://tva1.sinaimg.cn/large/e6c9d24egy1h19oxmphn0j20fq05kweo.jpg)
