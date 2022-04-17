@@ -14,23 +14,23 @@
   "dependencies": {
     "@craco/craco": "^6.4.3",
     "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.2.1",
+    "@testing-library/react": "^13.1.1",
+    "@testing-library/user-event": "^14.1.0",
     "@types/chrome": "^0.0.181",
     "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^17.0.20",
-    "@types/react-dom": "^18.0.0",
+    "@types/node": "^17.0.24",
+    "@types/react": "^18.0.5",
+    "@types/react-dom": "^18.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "^5.0.1",
-    "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0"
+    "typescript": "^4.6.3",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired INLINE_RUNTIME_CHUNK=false build",
-    "test": "react-app-rewired test",
+    "start": "craco start --config config/craco.config.ts ",
+    "build": "yarn run clean && craco build --config config/craco.config.ts INLINE_RUNTIME_CHUNK=false",
+    "test": "craco test --config config/craco.config.ts",
     "eject": "react-scripts eject",
     "clean": "rimraf build/"
   },
@@ -53,8 +53,6 @@
     ]
   },
   "devDependencies": {
-    "customize-cra": "^1.0.0",
-    "react-app-rewired": "^2.2.1",
     "ts-loader": "^9.2.8"
   }
 }

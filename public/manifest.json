@@ -1,6 +1,6 @@
 {
-  "name": "Chrome React Rick Extension",
-  "description": "The power of React and TypeScript for building interactive Chrome extensions",
+  "name": "Chrome Extension React TS HotReload Template",
+  "description": "A template project for develop extension project using React and typescript, use craco to override the config, and import the hot-reload to improve the development efficiency. Can directly use it to develop.",
   "version": "1.0",
   "manifest_version": 3,
   "action": {
@@ -8,13 +8,13 @@
     "default_title": "Open the popup"
   },
   "background": {
-    "service_worker": "./static/js/background_script.js"
+    "service_worker": "./static/js/background.js"
   },
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*", "<all_urls>"],
-      "run_at": "document_start",
-      "js": ["./static/js/content_script.js"]
+      "run_at": "document_idle",
+      "js": ["./static/js/content.js"]
     }
   ],
   "permissions":[
@@ -24,8 +24,5 @@
     "16": "logo192.png",
     "48": "logo192.png",
     "128": "logo192.png"
-  },
-  "action": {
-    "default_popup": "index.html"
   }
 }
