@@ -10,7 +10,13 @@ For more details to install yarn, visit [Ref](https://classic.yarnpkg.com/lang/e
 
 ## 1. What's included
 The template has been included:
-- React and Typescript. (CRA 5.0.0)
+- Main Technologies and version:
+  - React 18.0.0;
+  - Typescript 4.6.3: 
+  - create-react-app 5.0.1.
+  - Craco 6.4.3;
+  - Webpack;
+
 - Implement Craco to override create-react-app configuration. In this way, the project does not need to be ejected if the developer wanna modify the webpack.
 - Build Popup, ContentScript, BackgroundScript as isolated directories with corresponding config setting. 
 - Hot Reload, improve the development efficiency. 
@@ -41,29 +47,34 @@ The application is now loaded. If click the new button that appear on the extens
 
 ## 3. Folder Structure of this template
 
+As below, the template has removed the uncessary files from the original Create-React-App(CRA) structure. If interested, visit https://create-react-app.dev/docs/adding-typescript/ to learn how to build a start a new Create React App project with [TypeScript](https://www.typescriptlang.org/).
+
+The original `App.tsx`  has been moved and set as popup page.
+
 ```bash
-chrome-extension-mv3-react-ts-hotReload-template
+chrome-extension-mv3-react-ts-hotReload-template/
+├── node_modules/ # The folder would be generated after installed. 
 ├── README.md
 ├── config		# Config files folder for Craco
 │   └── craco.config.js  # Where you override the webpack config for CRA
 ├── package.json
-├── public
-│   ├── index.html
+├── public/
+│   ├── index.html # The page template.
 │   ├── logo192.png   # Should be replaced for your convenience, the project icon.
 │   └── manifest.json
-├── src
-│   ├── background_script
-│   │   └── index.tsx
-│   ├── chromeServices
-│   │   └── DOMEvaluator.tsx
-│   ├── content_script
-│   │   └── index.tsx
+├── src/ # Only files inside src are processed by webpack.
 │   ├── index.css
-│   ├── index.tsx  # The entry of the whole project
-│   ├── popup		
+│   ├── index.tsx  # The entry point, render the popup page. 
+│   ├── background_script/
+│   │   └── index.tsx
+│   ├── content_script/
+│   │   └── index.tsx
+│   ├── popup/
 │   │   ├── index.tsx
 │   │   └── style.css
-│   └── types
+│   ├── chromeServices/
+│   │   └── DOMEvaluator.tsx
+│   └── types/
 │       ├── DOMMessages.ts
 │       └── index.tsx
 ├── tsconfig.json 	# specify the root level files and the compiler options that requires to compile a TypeScript project.
