@@ -1,3 +1,6 @@
+/**
+ * Reference:https://blog.logrocket.com/creating-chrome-extension-react-typescript/
+ */
 import { DOMMessage, DOMMessageResponse } from '../types';
 
 const messagesFromReactAppListener = (msg: DOMMessage, sender: chrome.runtime.MessageSender, sendResponse: (response: DOMMessageResponse) => void) => {

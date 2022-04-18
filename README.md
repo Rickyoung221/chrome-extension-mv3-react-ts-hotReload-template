@@ -1,96 +1,85 @@
 # Chrome Extension
 
-This project was bootstrapped with [Create React App], it is based on the Chrome Extension Manifest V3.
+This project was bootstrapped with Create-React-App, a template which is developed based Manifest V3.
 
-
+The package manager for the template is Yarn. If you have npn installed but didn't install Yarn yet, run: 
+```
+npm install --global yarn
+```
+For more details to install yarn, visit [Ref](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable).
 
 ## 1. What's included
-
-- React with Typescript
-- Hot Reload
-- Popup with basic layout (header, body, footer)
-- `content_scripts` config (interact directly with current page's Document)
-- Ts-loader, webpack config
-
-
-
-## 2. The main dependencies
-
-
-```
-  "dependencies": {
-    "@craco/craco": "^6.4.3",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/chrome": "^0.0.181",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^17.0.20",
-    "@types/react-dom": "^18.0.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-scripts": "5.0.0",
-    "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0"
-  },
-```
+The template has been included:
+- React and Typescript. (CRA 5.0.0)
+- Implement Craco to override create-react-app configuration. In this way, the project does not need to be ejected if the developer wanna modify the webpack.
+- Build Popup, ContentScript, BackgroundScript as isolated directories with corresponding config setting. 
+- Hot Reload, improve the development efficiency. 
+- Popup page with basic layout (header, body, footer).
 
 
 ## 2. Installation
+In the project directory, run:
 
-```
+```shell
 yarn install
 
-# Run in watch mode
-yarn watch
+# Run in dev mode
+yarn start
 
 # Run in production mode
 yarn build 
 ```
+After the build command, visit `chrome://extensions/` on Chrome browser:
 
-Go to chrome://extensions in Google Chrome
+![Upload /build](https://tva1.sinaimg.cn/large/e6c9d24egy1h19oxmphn0j20fq05kweo.jpg)
 
-![Screen Shot 2022-04-14 at 08.57.31](https://tva1.sinaimg.cn/large/e6c9d24egy1h19oxmphn0j20fq05kweo.jpg)
+Enable the Developer mode toggle.
 
-Click the Developer mode checkbox
+Then click **Load unpacked** and select the `/build` folder which was produced from this repo. 
 
-Then click Load unpacked extension... and select the /build folder that produced from this repo.
+The application is now loaded. If click the new button that appear on the extensions toolbar, the popup page of the project would be shown. 
+
+## 3. Folder Structure of this template
+
+```bash
+chrome-extension-mv3-react-ts-hotReload-template
+├── README.md
+├── config		# Config files folder for Craco
+│   └── craco.config.js  # Where you override the webpack config for CRA
+├── package.json
+├── public
+│   ├── index.html
+│   ├── logo192.png   # Should be replaced for your convenience, the project icon.
+│   └── manifest.json
+├── src
+│   ├── background_script
+│   │   └── index.tsx
+│   ├── chromeServices
+│   │   └── DOMEvaluator.tsx
+│   ├── content_script
+│   │   └── index.tsx
+│   ├── index.css
+│   ├── index.tsx  # The entry of the whole project
+│   ├── popup		
+│   │   ├── index.tsx
+│   │   └── style.css
+│   └── types
+│       ├── DOMMessages.ts
+│       └── index.tsx
+├── tsconfig.json 	# specify the root level files and the compiler options that requires to compile a TypeScript project.
+└── yarn.lock
+```
+
+Export the directory tree through the command:
+
+```bash
+tree -L 4 -I "node_modules" > READMEnew.md
+```
+
+## 4. Guide
 
 
-## 3. Available Scripts
 
-In the project directory, you can run:
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 5. Remarks
+If find any issue, or any ideas to improve the features of the project, welcome to submit an issue report!

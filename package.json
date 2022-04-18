@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "craco start --config config/craco.config.ts ",
-    "build": "yarn run clean && craco build --config config/craco.config.ts INLINE_RUNTIME_CHUNK=false",
+    "build": "yarn run clean && craco build --config config/craco.config.js INLINE_RUNTIME_CHUNK=false",
     "test": "craco test --config config/craco.config.ts",
     "eject": "react-scripts eject",
     "clean": "rimraf build/"

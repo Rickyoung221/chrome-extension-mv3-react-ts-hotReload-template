@@ -9,8 +9,7 @@ module.exports = {
         return {
           ...webpackConfig,
           entry: {
-            main: [env === 'development' &&
-            require.resolve('react-dev-utils/webpackHotDevClient'),paths.appIndexJs].filter(Boolean),
+            main: [env === 'development' && require.resolve('react-dev-utils/webpackHotDevClient'),paths.appIndexJs].filter(Boolean),
             content: path.join(srcPath, 'content_script', 'index.tsx'),
             background: path.join(srcPath, 'background_script', 'index.tsx'),
             popup: path.join(srcPath, 'popup', 'index.tsx'),
@@ -28,4 +27,3 @@ module.exports = {
     }
   }
   
-export {}
