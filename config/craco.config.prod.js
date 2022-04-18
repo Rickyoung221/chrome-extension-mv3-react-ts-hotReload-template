@@ -2,7 +2,8 @@ const path = require('path');
 const rootPath = path.join(__dirname, '..');
 const srcPath = path.join(rootPath, 'src');
 const webpack = require('webpack');
-
+const { whenDev, whenProd, when } = require('@craco/craco')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     webpack: {
@@ -30,14 +31,19 @@ module.exports = {
           },
         }
       },
+      plugins: [
+        // Generates an `index.html` file with the <script> injected.
+        new HtmlWebpackPlugin(
+          Object.assign(
+            {},
+            {
+              inject: true,
+              chunks: ['main'],
+            },
+          )
+        )
+      ],
     },
-    resolve:{
-      //... Doesn't work yet, need to check
-      alias: {
-        background: path.resolve(__dirname, 'src/background_script/'),
-        content: path.resolve(__dirname, 'src/content_script/'),
-        popup: path.resolve(__dirname, 'src/popup/'),
-      },
-    }
+
   }
   

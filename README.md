@@ -1,24 +1,20 @@
 # Chrome Extension
 
-This project was bootstrapped with Create-React-App, a template which is developed based Manifest V3.
-
-The package manager for the template is Yarn. If you have npn installed but didn't install Yarn yet, run: 
-```
-npm install --global yarn
-```
-For more details to install yarn, visit [Ref](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable).
+This project was bootstrapped with Create-React-App with Typescript added, a template which is developed based Manifest V3.
 
 ## 1. What's included
 The template has been included:
-- Main Technologies and version:
+- Main Technologies and their version:
+  - Manifest V3;
   - React 18.0.0;
   - Typescript 4.6.3: 
-  - Create-React-App 5.0.1.
+  - Create-React-App (CRA) 5.0.1.
   - Craco 6.4.3;
-  - Webpack 5.0;
-
--  `chrome` proper types installed.
-- The build settings from CRA are updated in order to generate multiple files. (using craco)
+  - Webpack V5;
+  - react-router-dom v6;
+  
+- `chrome` proper types installed.
+- The build settings from CRA are updated in order to generate multiple files (content, background ..).
   - Implemented **Craco** to override create-react-app configuration. In this way, the project does not need to be ejected if the developer wanna modify the webpack.
 
 - Build Popup, ContentScript, BackgroundScript as isolated directories with corresponding config setting in webpack.
@@ -34,19 +30,21 @@ The template has been included:
 >
 > Ref: https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed
 
-​	Since it is just a template project, it would not decide enable this feature for the developer. 
+​	Since it is just a template project, it would not enable this feature for the developers. 
 
 - Hot Reload, improve the development efficiency. 
+- Merely use custom components for demo. (So the developers are welcome to add any UI Framework they want, no need to remove any dependencies.)
 - Popup:
   - page with basic layout (header, body, footer).
   - Router setting
+- Content Script inject web page successfully. 
 
 
 
 ## 2. Installation
 In the project directory, run:
 
-```apl
+```shell
 yarn install
 
 # Run in dev mode
@@ -71,7 +69,7 @@ As below, the template has removed the uncessary files from the original Create-
 
 The original `App.tsx`  has been moved and set as popup page.
 
-```apl
+```shell
 chrome-extension-mv3-react-ts-hotReload-template/
 ├── node_modules/ # The folder would be generated after installed. 
 ├── README.md
@@ -116,6 +114,8 @@ tree -L 4 -I "node_modules" > READMEnew.md
 
   - Edit the `craco.config.js` file to override. Add a new entry and match the entry point file. 
   - Edit the `manifest.json` to declare to add section about content_scripts，match the output files defined in the config. 
+  
+  
 
 
 ## 5. Remarks
