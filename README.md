@@ -13,20 +13,40 @@ The template has been included:
 - Main Technologies and version:
   - React 18.0.0;
   - Typescript 4.6.3: 
-  - create-react-app 5.0.1.
+  - Create-React-App 5.0.1.
   - Craco 6.4.3;
-  - Webpack;
+  - Webpack 5.0;
 
-- Implement Craco to override create-react-app configuration. In this way, the project does not need to be ejected if the developer wanna modify the webpack.
-- Build Popup, ContentScript, BackgroundScript as isolated directories with corresponding config setting. 
+-  `chrome` proper types installed.
+- The build settings from CRA are updated in order to generate multiple files. (using craco)
+  - Implemented **Craco** to override create-react-app configuration. In this way, the project does not need to be ejected if the developer wanna modify the webpack.
+
+- Build Popup, ContentScript, BackgroundScript as isolated directories with corresponding config setting in webpack.
+- Fix the Polyfill node core module error as the [current version of webpack](https://github.com/webpack/webpack) no longer includes NodeJS polyfills by default.
+
+> ### Automatic Node.js Polyfills Removed
+>
+> In the early days, webpack's aim was to allow running most Node.js modules in the browser, but the module landscape changed and many module uses are now written mainly for frontend purposes. Webpack <= 4 ships with polyfills for many of the Node.js core modules, which are automatically applied once a module uses any of the core modules (i.e. the `crypto` module).
+>
+> While this makes using modules written for Node.js easier, it adds these huge polyfills to the bundle. In many cases these polyfills are unnecessary.
+>
+> Webpack 5 stops automatically polyfilling these core modules and focus on frontend-compatible modules. Our goal is to improve compatibility with the web platform, where Node.js core modules are not available.
+>
+> Ref: https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed
+
+​	Since it is just a template project, it would not decide enable this feature for the developer. 
+
 - Hot Reload, improve the development efficiency. 
-- Popup page with basic layout (header, body, footer).
+- Popup:
+  - page with basic layout (header, body, footer).
+  - Router setting
+
 
 
 ## 2. Installation
 In the project directory, run:
 
-```shell
+```apl
 yarn install
 
 # Run in dev mode
@@ -51,32 +71,29 @@ As below, the template has removed the uncessary files from the original Create-
 
 The original `App.tsx`  has been moved and set as popup page.
 
-```bash
+```apl
 chrome-extension-mv3-react-ts-hotReload-template/
 ├── node_modules/ # The folder would be generated after installed. 
 ├── README.md
-├── config		# Config files folder for Craco
-│   └── craco.config.js  # Where you override the webpack config for CRA
+├── config/		# Config files folder for Craco
+│   └── craco.config.dev.js  # Where you override the webpack config, development mode
+│   └── craco.config.prod.js  # Where you override the webpack config, production mode
 ├── package.json
-├── public/
+├── public/ 
 │   ├── index.html # The page template.
 │   ├── logo192.png   # Should be replaced for your convenience, the project icon.
-│   └── manifest.json
+│   └── manifest.json # The blueprint of extension that tell the browser how to load the project.
 ├── src/ # Only files inside src are processed by webpack.
 │   ├── index.css
 │   ├── index.tsx  # The entry point, render the popup page. 
-│   ├── background_script/
+│   ├── background_script/ # Files run in the service workers
 │   │   └── index.tsx
-│   ├── content_script/
-│   │   └── index.tsx
-│   ├── popup/
+│   ├── content_script/  # Files that run in the context of web pages and access to the DOM elements
+│   │   └── index.tsx # Entry of content script
+│   │   └── types.tsx # Define msg object types
+│   ├── popup/ 
 │   │   ├── index.tsx
 │   │   └── style.css
-│   ├── chromeServices/
-│   │   └── DOMEvaluator.tsx
-│   └── types/
-│       ├── DOMMessages.ts
-│       └── index.tsx
 ├── tsconfig.json 	# specify the root level files and the compiler options that requires to compile a TypeScript project.
 └── yarn.lock
 ```
@@ -89,7 +106,16 @@ tree -L 4 -I "node_modules" > READMEnew.md
 
 ## 4. Guide
 
+- How React app interact with the content scripts? - [**Message Passing**](https://developer.chrome.com/extensions/messaging)
 
+  ![Diagram Of Messaging Passing API](https://blog.logrocket.com/wp-content/uploads/2021/08/extension-messaging-passing-api.png)
+
+  Ref of this image: https://blog.logrocket.com/creating-chrome-extension-react-typescript/
+
+- Steps to enable content script app:
+
+  - Edit the `craco.config.js` file to override. Add a new entry and match the entry point file. 
+  - Edit the `manifest.json` to declare to add section about content_scripts，match the output files defined in the config. 
 
 
 ## 5. Remarks
