@@ -120,3 +120,13 @@ tree -L 4 -I "node_modules" > READMEnew.md
 
 ## 5. Remarks
 If find any issue, or any ideas to improve the features of the project, welcome to submit an issue report!
+
+
+
+### Something could be improved…
+
+
+- So far, since I didn't find a method to override the plugin in CRA which genertate the ‘index.html’ and restrict the injected script. （In order to separte popup script and content script) 
+So I choose a kind of cumbersome approach, the project added a new plugin to generate 'popup.html', and match it in 'manifest.json' file. The issue of content-script injected into popup page has been fixed so far. And the scripts will remove 'index.html' after the build process has been done. But has to be admitted, it is not the best solution. 
+
+If anyone has a better idea or know how to override the plugin, welcome to test and submit a PR!
