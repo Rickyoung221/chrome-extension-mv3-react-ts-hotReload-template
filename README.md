@@ -92,6 +92,8 @@ chrome-extension-mv3-react-ts-hotReload-template/
 │   ├── popup/ 
 │   │   ├── index.tsx
 │   │   └── style.css
+│   ├── components/ 
+│   │   └── CustomButtonDemo/ # This components is just for demo.
 ├── tsconfig.json 	# specify the root level files and the compiler options that requires to compile a TypeScript project.
 └── yarn.lock
 ```
