@@ -1,6 +1,7 @@
 import * as React from 'react';
 import "./style.css";
 import CustomButtonDemo from '../components/CustomButtonDemo';
+//import Content from '../content_script';
 
 function Popup(){
     return(

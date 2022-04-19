@@ -92,6 +92,8 @@ chrome-extension-mv3-react-ts-hotReload-template/
 │   ├── popup/ 
 │   │   ├── index.tsx
 │   │   └── style.css
+│   ├── components/ 
+│   │   └── CustomButtonDemo/ # This components is just for demo.
 ├── tsconfig.json 	# specify the root level files and the compiler options that requires to compile a TypeScript project.
 └── yarn.lock
 ```
@@ -126,7 +128,19 @@ If find any issue, or any ideas to improve the features of the project, welcome 
 ### Something could be improved…
 
 
-- So far, since I didn't find a method to override the plugin in CRA which genertate the ‘index.html’ and restrict the injected script. （In order to separte popup script and content script) 
+- So far, since I didn't find a method to use Craco override the plugin in CRA which genertate the ‘index.html’ and restrict the injected script. （In order to separte popup script and content script) 
 So I choose a kind of cumbersome approach, the project added a new plugin to generate 'popup.html', and match it in 'manifest.json' file. The issue of content-script injected into popup page has been fixed so far. And the scripts will remove 'index.html' after the build process has been done. But has to be admitted, it is not the best solution. 
 
 If anyone has a better idea or know how to override the plugin, welcome to test and submit a PR!
+
+---
+
+**Update: **
+
+> Since this project is built by CRA V5. CRACO is not compatible with CRA V5 so far. That is why the project cannot directly override the plugin config inside the webpack.
+>
+> Craco are making efforts to upgrade the V5 ☞ https://github.com/gsoft-inc/craco/projects/1
+>
+> demo codesandbox: https://codesandbox.io/s/react-app-ts-x1nif7
+
+(Appreciate the answer comes from @[eleven-net-cn](https://github.com/eleven-net-cn/create-react-app/commits?author=eleven-net-cn)) 

@@ -27,7 +27,7 @@ module.exports = {
         },
       }
 
-      webpackConfig.devtool = false,
+      //webpackConfig.devtool = false,
 
       webpackConfig.optimization = {
         ...webpackConfig.optimization,
@@ -39,14 +39,14 @@ module.exports = {
     },
 
     plugins: [
-      // Generates an 'popup.html' file with the <script> injected.
+      // Generates an new file 'popup.html' with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
           {},
           {
             inject: true,
             chunks: ['main'],
-            template: "./public/index.html",
+            template: path.resolve(__dirname, '../public/index.html'),
             filename: "popup.html",
           },
         )
