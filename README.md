@@ -137,10 +137,8 @@ If anyone has a better idea or know how to override the plugin, welcome to test 
 
 **Update:**
 
-> Since this project is built by CRA V5. CRACO is not compatible with CRA V5 so far. That is why the project cannot directly override the plugin config inside the webpack.
->
-> Craco are making efforts to upgrade the V5 ☞ https://github.com/gsoft-inc/craco/projects/1
->
-> demo codesandbox: https://codesandbox.io/s/react-app-ts-x1nif7
+Since this project is built by CRA V5. CRACO is not compatible with CRA V5 so far. That is why the project cannot directly override the plugin config inside the webpack.
 
-(Appreciate the answer comes from @[eleven-net-cn](https://github.com/eleven-net-cn)) 
+Craco are making efforts to upgrade the V5 ☞ https://github.com/gsoft-inc/craco/projects/1
+
+demo codesandbox: https://codesandbox.io/s/react-app-ts-x1nif7
