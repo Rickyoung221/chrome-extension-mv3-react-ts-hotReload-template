@@ -20,42 +20,38 @@ module.exports = {
         background: path.join(srcPath, 'background_script', 'index.tsx'),
 
       }
-      // 修改 output
       webpackConfig.output = {
         ...webpackConfig.output,
         ...{
           filename: 'static/js/[name].js',
         },
       }
-      // 关闭 devtool
-      webpackConfig.devtool = false,
-      // 配置 splitChunks
+
+      //webpackConfig.devtool = false,
+
       webpackConfig.optimization = {
         ...webpackConfig.optimization,
         ...{
           runtimeChunk: false,
         },
       }
-      // 覆盖已经内置的 plugin 配置
-      webpackConfig.plugins.map((plugin) => {
-         whenProd(() =>{
-          if (plugin instanceof HtmlWebpackPlugin) {
-            if (plugin.options){
-            Object.assign(plugin.options, 
-              {
-                //inject: true,
-              	filename: 'popup.html',
-              	//chunks: ['main'],
-                template: path.resolve(__dirname, './public/index.html'),
-              });
-            }
-          }
-        });
-        return plugin
-      })
       return webpackConfig
     },
+
+    plugins: [
+      // Generates an new file 'popup.html' with the <script> injected.
+      new HtmlWebpackPlugin(
+        Object.assign(
+          {},
+          {
+            inject: true,
+            chunks: ['main'],
+            template: path.resolve(__dirname, '../public/index.html'),
+            filename: "popup.html",
+          },
+        )
+      ),
+    ],
   }
 }
-
 
