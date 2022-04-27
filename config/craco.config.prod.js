@@ -9,28 +9,22 @@ const ManifestPlugin = require("webpack-manifest-plugin");
 const paths = require("react-scripts/config/paths");
 
 module.exports = {
-  alias: {},
+  alias:{},
   babel: {},
   webpack: {
     configure: (webpackConfig, { env, paths }) => {
       webpackConfig.entry = {
-        //Popup is main for this template, which is the default entry point in CRA, it is not recommend to amend this. 
-        main: [
-          env === "development" &&
-            require.resolve("react-dev-utils/webpackHotDevClient"),
-          paths.appIndexJs,
-        ].filter(Boolean),
-        popup: path.join(srcPath, "popup", "index.tsx"),
-        content: path.join(srcPath, "content_script", "index.tsx"),
-        background: path.join(srcPath, "background_script", "index.tsx"),
-      };
+        main: [env === 'development' && require.resolve('react-dev-utils/webpackHotDevClient'),
+          paths.appIndexJs].filter(Boolean),
+        content: path.join(srcPath, 'content_script', 'index.tsx'),
+        background: path.join(srcPath, 'background_script', 'index.tsx'),
+      }
       webpackConfig.output = {
         ...webpackConfig.output,
         ...{
-          filename: "static/js/[name].js",
+          filename: 'static/js/[name].js',
         },
-      };
-      
+      }
 
       //webpackConfig.devtool = false,
 
@@ -39,28 +33,22 @@ module.exports = {
         ...{
           runtimeChunk: false,
         },
-      };
-      return webpackConfig;
+      }
+      return webpackConfig
     },
-
     plugins: [
-      ...whenProd(
-        () => [
-          // Generates an new file 'popup.html' with the <script> injected.
-          new HtmlWebpackPlugin(
-            Object.assign(
-              {},
-              {
-                inject: true,
-                chunåks: ["popup"],
-                template: path.resolve(__dirname, "../public/index.html"),
-                filename: "popup.html",
-              }
-            )
-          ),
-        ],
-        []
+      // Generates an new file 'popup.html' with the <script> injected.
+      new HtmlWebpackPlugin(
+        Object.assign(
+          {},
+          {
+            inject: true,
+            chunks: ['main'],
+            template: path.resolve(__dirname, '../public/index.html'),
+            filename: "popup.html",
+          },
+        )
       ),
     ],
-  },
-};
+  }
+}

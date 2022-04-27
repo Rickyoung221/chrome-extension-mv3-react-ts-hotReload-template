@@ -17,9 +17,7 @@
       "js": ["./static/js/content.js"]
     }
   ],
-  "permissions":[
-    "activeTab"
-  ],
+  "permissions": ["activeTab"],
   "icons": {
     "16": "logo192.png",
     "48": "logo192.png",
