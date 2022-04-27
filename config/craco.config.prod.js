@@ -14,7 +14,8 @@ module.exports = {
   webpack: {
     configure: (webpackConfig, { env, paths }) => {
       webpackConfig.entry = {
-        popup: [
+        //Popup is main for this template, which is the default entry point in CRA, it is not recommend to amend this. 
+        main: [
           env === "development" &&
             require.resolve("react-dev-utils/webpackHotDevClient"),
           paths.appIndexJs,
@@ -29,6 +30,7 @@ module.exports = {
           filename: "static/js/[name].js",
         },
       };
+      
 
       //webpackConfig.devtool = false,
 
