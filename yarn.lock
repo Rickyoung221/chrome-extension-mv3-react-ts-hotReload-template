@@ -2892,7 +2892,7 @@ check-types@^11.1.1:
   resolved "https://registry.npmmirror.com/check-types/-/check-types-11.1.2.tgz#86a7c12bf5539f6324eb0e70ca8896c0e38f3e2f"
   integrity sha512-tzWzvgePgLORb9/3a0YenggReLKAIb2owL03H2Xdoe5pKcUyWRSEQ8xfCar8t2SIAuEDwtmx2da1YB52YuHQMQ==
 
-chokidar@^3.4.2, chokidar@^3.5.3:
+chokidar@^3.4.2, chokidar@^3.5.2, chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://registry.npmmirror.com/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"
   integrity sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==
@@ -5916,6 +5916,15 @@ multicast-dns@^7.2.4:
     dns-packet "^5.2.2"
     thunky "^1.0.2"
 
+mv3-hot-reload@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.npmmirror.com/mv3-hot-reload/-/mv3-hot-reload-0.2.7.tgz#ed9f58ea7657ee4f0d3242762df150fc9e008a3a"
+  integrity sha512-/6moTDBvb2ogrH0FsUGS5XD3eAw/dh4JGYR/b9NxbAvvbD1DhFCta57rtHWwm3MASNaHkscjtY49TvxHnJjCNA==
+  dependencies:
+    chokidar "^3.5.2"
+    lodash "^4.17.21"
+    ws "^7.5.3"
+
 nanoid@^3.3.1:
   version "3.3.2"
   resolved "https://registry.npmmirror.com/nanoid/-/nanoid-3.3.2.tgz#c89622fafb4381cd221421c69ec58547a1eec557"
@@ -8750,7 +8759,7 @@ write-file-atomic@^3.0.0:
     signal-exit "^3.0.2"
     typedarray-to-buffer "^3.1.5"
 
-ws@^7.4.6:
+ws@^7.4.6, ws@^7.5.3:
   version "7.5.7"
   resolved "https://registry.npmmirror.com/ws/-/ws-7.5.7.tgz#9e0ac77ee50af70d58326ecff7e85eb3fa375e67"
   integrity sha512-KMvVuFzpKBuiIXW3E4u3mySRO2/mCHSyZDJQM5NQ9Q9KHWHWh0NHgfbRMLLrceUK5qAL4ytALJbpRMjixFZh8A==

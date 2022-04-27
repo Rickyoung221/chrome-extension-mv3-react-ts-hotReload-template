@@ -1,3 +1,6 @@
+// This component is refered from https://www.twilio.com/blog/intro-custom-button-component-typescript-react
+// It is just for demo. 
+// Please remove this file and develop your own components. 
 import React from "react";
 
 interface Props {

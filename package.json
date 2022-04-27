@@ -21,6 +21,7 @@
     "@types/node": "^17.0.24",
     "@types/react": "^18.0.5",
     "@types/react-dom": "^18.0.1",
+    "mv3-hot-reload": "^0.2.7",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "^5.0.1",
@@ -31,6 +32,9 @@
     "start": "craco start --config config/craco.config.dev.js ",
     "build": "yarn run clean && craco build --config config/craco.config.prod.js INLINE_RUNTIME_CHUNK=false && rm build/index.html",
     "test": "craco test --config config/craco.config.js",
+    "watch:src": "yarn run clean && craco --config config/craco.config.dev.js",
+    "watch:dist": "mv3-hot-reload",
+    "watch": "concurrently yarn:watch:*",
     "eject": "react-scripts eject",
     "clean": "rimraf build/"
   },
