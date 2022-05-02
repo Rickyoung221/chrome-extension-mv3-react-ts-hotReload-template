@@ -2,15 +2,11 @@
 const path = require("path");
 const rootPath = path.join(__dirname, "..");
 const srcPath = path.join(rootPath, "src");
-const webpack = require("webpack");
-const { whenDev, whenProd, when } = require("@craco/craco");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 const ManifestPlugin = require("webpack-manifest-plugin");
-const paths = require("react-scripts/config/paths");
 
 module.exports = {
-  alias:{},
-  babel: {},
   webpack: {
     configure: (webpackConfig, { env, paths }) => {
       webpackConfig.entry = {
@@ -34,16 +30,20 @@ module.exports = {
           runtimeChunk: false,
         },
       }
+
       return webpackConfig
     },
-    plugins: [
-      // Generates an new file 'popup.html' with the <script> injected.
+  plugins: [
+      // Generates an new file 'popup.html' with the <script> injected. 
+      // Manifest would be declared `popup.html` as the default entry point of the applicaiton.
+      // The original `index.html` file would be deleted when build. 
+      // It could be improved when CRA V5 is supported for Craco.
       new HtmlWebpackPlugin(
         Object.assign(
           {},
           {
             inject: true,
-            chunks: ['main'],
+            chunks: ['main', 'background'],
             template: path.resolve(__dirname, '../public/index.html'),
             filename: "popup.html",
           },

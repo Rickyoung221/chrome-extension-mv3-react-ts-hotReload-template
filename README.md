@@ -9,7 +9,7 @@ The template has been included:
   - React 18.0.0;
   - Typescript 4.6.3: 
   - Create-React-App (CRA) 5.0.1.
-  - Craco 6.4.3;
+  - @craco/cracpo 7.0.0-alpha.3;  https://www.npmjs.com/package/@craco/craco/v/7.0.0-alpha.3
   - Webpack V5;
   - react-router-dom v6;
   
@@ -144,3 +144,8 @@ If anyone has a better idea or know how to override the plugin, welcome to test 
 > demo codesandbox: https://codesandbox.io/s/react-app-ts-x1nif7
 
 (Appreciate the answer comes from @[eleven-net-cn](https://github.com/eleven-net-cn)) 
+
+## Hot-Reload
+
+- `yarn watch:src` 是当src的文件发生变化就打包成build，
+- `yarn watch:build` 是当build文件发生变化就 重新注册 background和content-Script 使之生效

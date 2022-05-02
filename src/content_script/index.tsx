@@ -5,7 +5,7 @@ import { DOMMessage, DOMMessageResponse } from "./types";
 import ReactDOM from "react-dom";
 //import { createRoot } from 'react-dom/client';
 import CustomButtonDemo from "../components/CustomButtonDemo";
-
+import 'mv3-hot-reload/content';
 console.log("[TRACE] Content Script is Running");
 
 //Listern Funciton for React app (popup).

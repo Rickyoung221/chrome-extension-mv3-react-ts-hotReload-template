@@ -11,10 +11,10 @@ function Popup() {
         border={""}
         color={"yellow"}
         height={"80px"}
-        onClick={() => console.log("You clicked on the pink circle!")}
+        onClick={() => console.log("You clicked on the yellow circle! Popup works.")}
         radius={"50%"}
         width={"80px"}
-        children="Button in Popup"
+        children="Button in lili"
       />
     </div>
   );
